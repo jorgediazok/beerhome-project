@@ -1,14 +1,9 @@
-//Para variables de entorno
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
-
-//Imports que se van a usar
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-//Para dar inicio al servidor
-const app = express();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 //Middlewares
 app.use(cors());
