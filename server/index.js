@@ -14,6 +14,7 @@ const app = express();
 app.use(cors());
 
 //Conexión a la Base de Datos en MONGO DB
+//Database
 mongoose
   .connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
