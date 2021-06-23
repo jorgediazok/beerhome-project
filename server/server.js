@@ -5,8 +5,6 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-//CAMBIO NUEVO
-
 //Middlewares
 app.use(cors());
 
