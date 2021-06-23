@@ -1,9 +1,9 @@
+const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 
 //Middlewares
 app.use(cors());
