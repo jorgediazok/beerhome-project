@@ -32,5 +32,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-//Hola, soy el cambio
