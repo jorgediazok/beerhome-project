@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Button.scss';
-//THis is a testing message. Must be removed later.
 
 const Button = () => {
   return (

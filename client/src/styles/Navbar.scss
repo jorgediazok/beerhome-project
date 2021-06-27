@@ -1,5 +1,7 @@
+@import "../index.scss";
+
 .navbar {
-  background: #191919;
+  background: nth($colors, 1);
   height: 80px;
   display: flex;
   justify-content: space-evenly;
@@ -9,14 +11,20 @@
   position: sticky;
 }
 
-.navbar-logo {
-  background-image: linear-gradient(45deg, #fb8f2a, #d1c64d);
+.navbar-logo,
+.nav-links,
+.fa-bars,
+.cart-icon {
+  background-image: linear-gradient(45deg, nth($colors, 3), nth($colors, 4));
   background-size: 100%;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  justify-self: start;
   cursor: pointer;
   text-decoration: none;
+}
+
+.navbar-logo {
+  justify-self: start;
   font-size: 2rem;
 }
 
@@ -43,25 +51,13 @@
 }
 
 .nav-links {
-  background-image: linear-gradient(45deg, #fb8f2a, #d1c64d);
-  background-size: 100%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: none;
   padding: 0.5rem 1rem;
 }
 
 .nav-links:hover {
-  background-color: #d1c64d;
+  background-color: nth($colors, 4);
   border-radius: 4px;
   transition: all 0.2s ease-out;
-}
-
-.fa-bars {
-  background-image: linear-gradient(45deg, #fb8f2a, #d1c64d);
-  background-size: 100%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .nav-links-mobile {
@@ -90,9 +86,8 @@
   }
 
   .nav-menu.active {
-    background: #242222;
+    background: nth($colors, 1);
     left: 0;
-    opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
   }
@@ -105,7 +100,7 @@
   }
 
   .nav-links:hover {
-    background-color: #1888ff;
+    // background-color: #1888ff;
     border-radius: 0;
   }
 
@@ -127,7 +122,7 @@
   }
 
   .fa-times {
-    color: #fff;
+    color: nth($colors, 2);
     font-size: 2rem;
   }
 
@@ -138,15 +133,15 @@
     margin: 2rem auto;
     border-radius: 4px;
     width: 80%;
-    background: #1888ff;
+    // background: #1888ff;
     text-decoration: none;
-    color: #fff;
+    color: nth($colors, 2);
     font-size: 1.5rem;
   }
 
   .nav-links-mobile:hover {
-    background: #fff;
-    color: #1888ff;
+    background: nth($colors, 2);
+    // color: #1888ff;
     transition: 250ms;
   }
 
@@ -156,11 +151,6 @@
 }
 
 .cart-icon {
-  background-image: linear-gradient(45deg, #fb8f2a, #d1c64d);
-  background-size: 100%;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: pointer;
   font-size: 1.5rem;
 
   @media screen and (max-width: 950px) {
