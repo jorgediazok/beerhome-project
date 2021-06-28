@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Button.scss';
-//THis is a testing message. Must be removed later.
-
+//comment
 const Button = () => {
   return (
     <Link to="/signup">
