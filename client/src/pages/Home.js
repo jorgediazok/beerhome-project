@@ -5,7 +5,7 @@ import Client from '../api/api';
 
 //COMPONENTS
 import Hero from '../components/Hero';
-import OurProducts from '../components/HomeSections/OurProducts';
+// import OurProducts from '../components/HomeSections/OurProducts';
 
 const Home = () => {
   const [beers, setBeers] = useState([]);
@@ -17,6 +17,7 @@ const Home = () => {
         content_type: 'beerHouseProject',
       });
       const fetchedBeers = await response.items;
+      console.log(fetchedBeers);
       setBeers(fetchedBeers);
       console.log(beers);
     } catch (err) {
