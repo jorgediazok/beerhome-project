@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Navbar.scss';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/Navbar.scss";
 
 const Navbar = () => {
   //States
@@ -19,15 +19,17 @@ const Navbar = () => {
           BEERHOUSE
         </Link>
         <div className="menu-icon" onClick={handleClick}>
-          <i className={clickMenu ? 'fas fa-times' : 'fas fa-bars'} />
+          <i className={clickMenu ? "fas fa-times" : "fas fa-bars"} />
         </div>
-        <ul className={clickMenu ? 'nav-menu active' : 'nav-menu'}>
+        <ul className={clickMenu ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <Link
-              to="/nosotros"
-              className="nav-links"
-              onClick={closeMobileMenu}>
+            <Link to="/us" className="nav-links" onClick={closeMobileMenu}>
               NOSOTROS
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/us" className="nav-links" onClick={closeMobileMenu}>
+              PRODUCTOS
             </Link>
           </li>
           <li className="nav-item">
@@ -40,10 +42,12 @@ const Navbar = () => {
               LOGIN
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/cart">
+              <i className="fas fa-cart-arrow-down cart-icon"></i>
+            </Link>
+          </li>
         </ul>
-        <Link to="/cart">
-          <i className="fas fa-cart-arrow-down cart-icon"></i>
-        </Link>
       </nav>
     </>
   );
