@@ -21,6 +21,7 @@ const Home = () => {
       console.log(beers);
     } catch (err) {
       console.log(err);
+      console.log("Soy el cambio");
     }
   };
 
@@ -29,9 +30,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Hero />
-    </div>
+    </>
   );
 };
 

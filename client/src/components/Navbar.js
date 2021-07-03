@@ -28,12 +28,13 @@ const Navbar = () => {
         </div>
         <ul className={clickMenu ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <Link
-              to="/nosotros"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/us" className="nav-links" onClick={closeMobileMenu}>
               NOSOTROS
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/us" className="nav-links" onClick={closeMobileMenu}>
+              PRODUCTOS
             </Link>
           </li>
           <li className="nav-item">
@@ -46,10 +47,12 @@ const Navbar = () => {
               LOGIN
             </div>
           </li>
+          <li className="nav-item">
+            <Link to="/cart">
+              <i className="fas fa-cart-arrow-down cart-icon"></i>
+            </Link>
+          </li>
         </ul>
-        <Link to="/cart">
-          <i className="fas fa-cart-arrow-down cart-icon"></i>
-        </Link>
       </nav>
       <Signup isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
