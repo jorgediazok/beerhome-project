@@ -1,14 +1,16 @@
-@import '../index.scss';
+@import "../index.scss";
 
 .navbar {
   background: nth($colors, 1);
-  height: 80px;
+  width: 100vw;
+  height: 4em;
+  padding: 1em;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   font-size: 1.2rem;
   z-index: 1000;
-  position: sticky;
+  position: fixed;
 }
 
 .navbar-logo,
@@ -34,14 +36,16 @@
 }
 
 .nav-menu {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-gap: 10px;
+  // display: grid;
+  // grid-template-columns: repeat(5, auto);
+  // grid-gap: 10px;
+  display: flex;
+  justify-content: flex-end;
   list-style: none;
   text-align: center;
   width: 70vw;
-  justify-content: center;
-  margin-right: 2rem;
+  // justify-content: center;
+  // margin-right: 2rem;
 }
 
 .nav-item {
@@ -68,6 +72,10 @@
   display: none;
 }
 
+.cart-icon {
+  padding-right: 0.5em;
+}
+
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;
@@ -76,6 +84,7 @@
   .nav-menu {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 90vh;
     position: absolute;
@@ -100,7 +109,6 @@
   }
 
   .nav-links:hover {
-    // background-color: #1888ff;
     border-radius: 0;
   }
 
@@ -116,6 +124,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    padding-right: 0.5em;
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
@@ -133,15 +142,12 @@
     margin: 2rem auto;
     border-radius: 4px;
     width: 80%;
-    // background: #1888ff;
     text-decoration: none;
     color: nth($colors, 2);
     font-size: 1.5rem;
   }
 
   .nav-links-mobile:hover {
-    background: nth($colors, 2);
-    // color: #1888ff;
     transition: 250ms;
   }
 
