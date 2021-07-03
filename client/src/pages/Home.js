@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 //API
-import Client from '../api/api';
+import Client from "../api/api";
 
 //COMPONENTS
-import Hero from '../components/Hero';
-import OurProducts from '../components/HomeSections/OurProducts';
+import Hero from "../components/Hero";
+import OurProducts from "../components/HomeSections/OurProducts";
 
 const Home = () => {
   const [beers, setBeers] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
   const getData = async () => {
     try {
       let response = await Client.getEntries({
-        content_type: 'beerHouseProject',
+        content_type: "beerHouseProject",
       });
       const fetchedBeers = await response.items;
       setBeers(fetchedBeers);

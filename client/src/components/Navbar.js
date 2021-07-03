@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Navbar.scss';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Signup from "../pages/Signup";
+import "../styles/Navbar.scss";
 
 const Navbar = () => {
   //States
   const [clickMenu, setClickMenu] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
 
   //Controla el state del burger menu
   const handleClick = () => setClickMenu(!clickMenu);
@@ -19,14 +24,15 @@ const Navbar = () => {
           BEERHOUSE
         </Link>
         <div className="menu-icon" onClick={handleClick}>
-          <i className={clickMenu ? 'fas fa-times' : 'fas fa-bars'} />
+          <i className={clickMenu ? "fas fa-times" : "fas fa-bars"} />
         </div>
-        <ul className={clickMenu ? 'nav-menu active' : 'nav-menu'}>
+        <ul className={clickMenu ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <Link
               to="/nosotros"
               className="nav-links"
-              onClick={closeMobileMenu}>
+              onClick={closeMobileMenu}
+            >
               NOSOTROS
             </Link>
           </li>
@@ -36,15 +42,16 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/signup" className="nav-links">
+            <div className="nav-links" onClick={openModal}>
               LOGIN
-            </Link>
+            </div>
           </li>
         </ul>
         <Link to="/cart">
           <i className="fas fa-cart-arrow-down cart-icon"></i>
         </Link>
       </nav>
+      <Signup isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };
