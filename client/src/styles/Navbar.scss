@@ -1,7 +1,8 @@
-@import "../index.scss";
+@import '../index.scss';
 
 .navbar {
   background: nth($colors, 1);
+  border-bottom: 1px solid #191919;
   width: 100vw;
   height: 4em;
   padding: 1em;

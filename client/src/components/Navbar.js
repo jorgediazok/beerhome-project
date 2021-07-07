@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Signup from "../pages/Signup";
 import "../styles/Navbar.scss";
 
 const Navbar = () => {
   //States
   const [clickMenu, setClickMenu] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
 
   //Controla el state del burger menu
   const handleClick = () => setClickMenu(!clickMenu);
@@ -38,9 +43,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/signup" className="nav-links">
+            <div className="nav-links" onClick={openModal}>
               LOGIN
-            </Link>
+            </div>
           </li>
           <li className="nav-item">
             <Link to="/cart">
@@ -49,6 +54,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
+      <Signup isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };
