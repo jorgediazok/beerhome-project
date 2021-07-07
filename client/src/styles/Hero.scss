@@ -1,4 +1,8 @@
+@import '../index.scss';
+@import '../index.scss';
+
 .hero-container {
+  width: 100vw;
   height: 100vh;
   background: #191919;
   display: flex;
@@ -7,12 +11,53 @@
 }
 
 .hero-title__container {
-  color: whitesmoke;
-  margin: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 6em;
+}
+
+.hero-title {
+  font-size: 6em;
+  background-image: linear-gradient(45deg, nth($colors, 3), nth($colors, 4));
+  background-size: 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.5em;
+  text-align: center;
+  background-image: linear-gradient(45deg, nth($colors, 3), nth($colors, 4));
+  background-size: 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-button {
+  margin-top: 40px !important;
+  background-color: nth($colors, 4);
+  color: #191919;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  &:hover {
+    background-color: nth($colors, 3);
+  }
 }
 
 .hero-img {
-  width: 50%;
-  height: 50%;
+  width: 420px;
+  height: 70%;
   filter: brightness(0.5);
 }
