@@ -1,18 +1,19 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Pages for routing
-import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Shop from "./pages/Shop";
-import Product from "./pages/Product";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import Success from "./pages/Success";
-import PageNotFound from "./pages/PageNotFound";
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Shop from './pages/Shop';
+import Product from './pages/Product';
+import Products from './pages/Products';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Success from './pages/Success';
+import PageNotFound from './pages/PageNotFound';
 
 //Components
-import Navbar from "./components/Navbar";
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -20,14 +21,15 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/cart" component={Shop} />
-          <Route path="/cart/:id" component={Product} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/success" component={Success} />
-          <Route path="*" component={PageNotFound} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/products' component={Products} />
+          <Route exact path='/cart' component={Shop} />
+          <Route exact path='/cart/:id' component={Product} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/cart' component={Cart} />
+          <Route exact path='/checkout' component={Checkout} />
+          <Route exact path='/success' component={Success} />
+          <Route path='*' component={PageNotFound} />
         </Switch>
       </Router>
     </>
