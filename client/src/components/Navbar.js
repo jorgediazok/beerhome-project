@@ -1,60 +1,65 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Signup from "../pages/Signup";
-import "../styles/Navbar.scss";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/Navbar.scss';
 
 const Navbar = () => {
   //States
   const [clickMenu, setClickMenu] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
 
   //Controla el state del burger menu
   const handleClick = () => setClickMenu(!clickMenu);
 
   //Cierra el menu que se abre en modo mobile<<<<<<<
-  const closeMobileMenu = () => {};
+  const closeMobileMenu = () => {
+    setClickMenu(!clickMenu);
+  };
 
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="navbar-logo">
+      <nav className='navbar'>
+        <Link to='/' className='navbar-logo'>
           BEERHOUSE
         </Link>
-        <div className="menu-icon" onClick={handleClick}>
-          <i className={clickMenu ? "fas fa-times" : "fas fa-bars"} />
+        <div className='menu-icon' onClick={handleClick}>
+          <i className={clickMenu ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
-        <ul className={clickMenu ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/us" className="nav-links" onClick={closeMobileMenu}>
+        <ul className={clickMenu ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+            <Link
+              to='/nosotros'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
               NOSOTROS
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/us" className="nav-links" onClick={closeMobileMenu}>
+          <li className='nav-item'>
+            <Link
+              to='/products'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
               PRODUCTOS
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/tienda" className="nav-links" onClick={closeMobileMenu}>
-              TIENDA <i className="fas fa-beer"></i>
+          <li className='nav-item'>
+            <Link to='/tienda' className='nav-links' onClick={closeMobileMenu}>
+              TIENDA <i className='fas fa-beer'></i>
             </Link>
           </li>
-          <li className="nav-item">
-            <div className="nav-links" onClick={openModal}>
+          <li className='nav-item'>
+            <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
               LOGIN
-            </div>
+            </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/cart">
-              <i className="fas fa-cart-arrow-down cart-icon"></i>
+          <li className='nav-item'>
+            <Link to='/cart' className='nav-links' onClick={closeMobileMenu}>
+              <i className='fas fa-cart-arrow-down cart-icon' />
+              <div className='counter'>2</div>
             </Link>
           </li>
         </ul>
       </nav>
-      <Signup isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };
