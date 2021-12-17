@@ -16,6 +16,10 @@ $medium: 768px;
   top: 0;
   z-index: 1000;
   position: fixed;
+
+  @media screen and (max-width: $small) {
+    padding: 40px 40px;
+  }
 }
 
 .navbar-logo,
@@ -78,9 +82,29 @@ $medium: 768px;
 
 .cart-icon {
   padding-left: 0.9em;
+  position: relative;
 
   @media screen and (max-width: $small) {
     padding-left: 0;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: 30px;
+  right: 95px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: nth($colors, 4);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  @media screen and (max-width: $small) {
+    top: 440px;
+    right: 165px;
   }
 }
 

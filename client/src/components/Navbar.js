@@ -5,13 +5,14 @@ import '../styles/Navbar.scss';
 const Navbar = () => {
   //States
   const [clickMenu, setClickMenu] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   //Controla el state del burger menu
   const handleClick = () => setClickMenu(!clickMenu);
 
   //Cierra el menu que se abre en modo mobile<<<<<<<
-  const closeMobileMenu = () => {};
+  const closeMobileMenu = () => {
+    setClickMenu(!clickMenu);
+  };
 
   return (
     <>
@@ -24,7 +25,11 @@ const Navbar = () => {
         </div>
         <ul className={clickMenu ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-            <Link to='/us' className='nav-links' onClick={closeMobileMenu}>
+            <Link
+              to='/nosotros'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
               NOSOTROS
             </Link>
           </li>
@@ -50,6 +55,7 @@ const Navbar = () => {
           <li className='nav-item'>
             <Link to='/cart' className='nav-links' onClick={closeMobileMenu}>
               <i className='fas fa-cart-arrow-down cart-icon' />
+              <div className='counter'>2</div>
             </Link>
           </li>
         </ul>
