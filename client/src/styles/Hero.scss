@@ -6,16 +6,17 @@ $medium: 768px;
 
 .hero-container {
   position: sticky;
-  width: 100vw;
-  height: 100vh;
   background: #191919;
   display: flex;
   justify-content: center;
+  padding-top: 158px;
   align-items: center;
+  width: 100vw;
   @media screen and (max-width: $small) {
     max-width: 100%;
     flex-direction: column;
-    margin-top: 7em;
+    margin-top: 5em;
+    padding-top: 0;
   }
 }
 
@@ -75,7 +76,7 @@ $medium: 768px;
 }
 
 .hero-img {
-  width: 420px;
+  width: 450px;
   height: 70%;
   filter: brightness(0.5);
   @media screen and (max-width: $small) {

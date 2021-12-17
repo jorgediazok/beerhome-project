@@ -5,8 +5,7 @@ import '../styles/Home.scss';
 import Client from '../api/api';
 
 //COMPONENTS
-import Layout from '../components/Layout';
-import Hero from '../components/Hero';
+import Hero from '../components/HomeSections/Hero';
 import OurProducts from '../components/HomeSections/OurProducts';
 
 const Home = () => {
@@ -29,12 +28,10 @@ const Home = () => {
     getData();
   }, []);
 
-  console.log(beers);
-
   return (
     <div className='home__container'>
       <Hero />
-      <OurProducts />
+      <OurProducts beers={beers} setBeers={setBeers} />
     </div>
   );
 };
