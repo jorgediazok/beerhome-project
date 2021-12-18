@@ -1,13 +1,19 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import '../../styles/ProductCard.scss';
 
-const ProductCard = ({ beers, setBeers }) => {
+const ProductCard = ({ beers }) => {
+  const history = useHistory();
   console.log(beers);
 
   return (
     <div className='productCard__container'>
       {beers.map((beer) => (
-        <div key={beer.fields.id} className='productCard'>
+        <div
+          key={beer.fields.id}
+          className='productCard'
+          onClick={() => history.push(`/products/${beer.fields.id}`)}
+        >
           <img
             src={beer.fields.image.fields.file.url}
             alt=''

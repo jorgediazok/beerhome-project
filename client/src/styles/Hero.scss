@@ -9,14 +9,15 @@ $medium: 768px;
   background: #191919;
   display: flex;
   justify-content: center;
-  padding-top: 158px;
   align-items: center;
   width: 100vw;
+  height: 700px;
   @media screen and (max-width: $small) {
     max-width: 100%;
     flex-direction: column;
     margin-top: 5em;
     padding-top: 0;
+    height: 550px;
   }
 }
 
@@ -76,11 +77,11 @@ $medium: 768px;
 }
 
 .hero-img {
-  width: 450px;
+  width: 520px;
   height: 70%;
   filter: brightness(0.5);
   @media screen and (max-width: $small) {
     height: 50%;
-    width: 360px;
+    width: 340px;
   }
 }

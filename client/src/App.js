@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+//API
+import Client from './api/api';
 
 //Pages for routing
 import Home from './pages/Home';
@@ -15,16 +18,40 @@ import PageNotFound from './pages/PageNotFound';
 
 //Components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
+  const [beers, setBeers] = useState([]);
+
+  //CALLING THE API
+  const getData = async () => {
+    try {
+      let response = await Client.getEntries({
+        content_type: 'beerHouseProject',
+      });
+      const fetchedBeers = await response.items;
+      setBeers(fetchedBeers);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/'>
+            <Home beers={beers} setBeers={setBeers} />
+          </Route>
           <Route exact path='/nosotros' component={Nosotros} />
-          <Route exact path='/products' component={Products} />
+          <Route exact path='/products'>
+            <Products beers={beers} setBeers={setBeers} />
+          </Route>
           <Route exact path='/products/:id' component={Product} />
           <Route exact path='/cart' component={Shop} />
           <Route exact path='/login' component={Login} />
@@ -33,6 +60,7 @@ function App() {
           <Route exact path='/success' component={Success} />
           <Route path='*' component={PageNotFound} />
         </Switch>
+        <Footer />
       </Router>
     </>
   );

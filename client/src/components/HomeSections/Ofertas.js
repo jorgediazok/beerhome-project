@@ -2,10 +2,10 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import '../../styles/OurProducts.scss';
 
-const OurProducts = ({ beers, setBeers }) => {
+const Ofertas = ({ beers, setBeers }) => {
   return (
     <div className='products__container'>
-      <h1 className='products__title'>Las mejores cervezas del mundo</h1>
+      <h1 className='products__title'>Las mejores cervezas en oferta</h1>
       <p className='products__description'>
         Importadas desde los países con más tradición cervecera y bajo estrictos
         estándares de calidad. No te pierdas las mejores ofertas para este
@@ -18,4 +18,4 @@ const OurProducts = ({ beers, setBeers }) => {
   );
 };
 
-export default OurProducts;
+export default Ofertas;
