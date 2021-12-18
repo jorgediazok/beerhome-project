@@ -7,6 +7,7 @@ import Client from '../api/api';
 //COMPONENTS
 import Hero from '../components/HomeSections/Hero';
 import OurProducts from '../components/HomeSections/OurProducts';
+import Footer from '../components/Footer';
 
 const Home = () => {
   const [beers, setBeers] = useState([]);
@@ -32,6 +33,7 @@ const Home = () => {
     <div className='home__container'>
       <Hero />
       <OurProducts beers={beers} setBeers={setBeers} />
+      <Footer />
     </div>
   );
 };
