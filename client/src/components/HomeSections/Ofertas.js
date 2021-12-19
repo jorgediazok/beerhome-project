@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import OfertaCard from './OfertaCard';
 import '../../styles/OurProducts.scss';
 
 const Ofertas = ({ beers, setBeers }) => {
@@ -12,7 +12,7 @@ const Ofertas = ({ beers, setBeers }) => {
         verano
       </p>
       <div className='products__wrapper'>
-        <ProductCard beers={beers} setBeers={setBeers} />
+        <OfertaCard beers={beers} setBeers={setBeers} />
       </div>
     </div>
   );

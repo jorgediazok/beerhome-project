@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Nosotros from './pages/Nosotros';
 import Shop from './pages/Shop';
-import Product from './pages/Product';
+import ProductSingle from './pages/ProductSingle';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
@@ -52,7 +52,7 @@ function App() {
           <Route exact path='/products'>
             <Products beers={beers} setBeers={setBeers} />
           </Route>
-          <Route exact path='/products/:id' component={Product} />
+          <Route exact path='/products/:id' component={ProductSingle} />
           <Route exact path='/cart' component={Shop} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/cart' component={Cart} />

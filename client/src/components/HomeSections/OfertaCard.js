@@ -1,10 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import '../../styles/ProductCard.scss';
+import '../../styles/OfertaCard.scss';
 
-const ProductCard = ({ beers }) => {
+const OfertaCard = ({ beers }) => {
   const history = useHistory();
-  console.log(beers);
 
   return (
     <div className='productCard__container'>
@@ -28,4 +27,4 @@ const ProductCard = ({ beers }) => {
   );
 };
 
-export default ProductCard;
+export default OfertaCard;
