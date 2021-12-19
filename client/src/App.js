@@ -52,7 +52,9 @@ function App() {
           <Route exact path='/products'>
             <Products beers={beers} setBeers={setBeers} />
           </Route>
-          <Route exact path='/products/:id' component={ProductSingle} />
+          <Route exact path='/products/:id'>
+            <ProductSingle beers={beers} />
+          </Route>
           <Route exact path='/cart' component={Shop} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/cart' component={Cart} />
