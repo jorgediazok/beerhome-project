@@ -37,7 +37,7 @@ const ProductSingle = ({ beers }) => {
       <div className='product__right'>
         <h1 className='product__title'>{beer.name}</h1>
         <span className='product__price'>${beer.price}</span>
-        <p className='product__description'>{beer.description}</p>
+        <p className='product__description'>{beer.descriptionExtended}</p>
         <h3 className='product__choose'>Elija la cantidad</h3>
         <div className='product__quantity'>
           <div className='product__options'>
