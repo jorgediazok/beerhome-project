@@ -8,11 +8,17 @@ $medium: 768px;
   margin-top: 50px;
   @media screen and (max-width: $small) {
     flex-direction: column;
+    justify-content: center;
+    margin-top: 180px;
   }
 }
 
 .product__title {
   margin-bottom: 20px;
+  @media screen and (max-width: $small) {
+    margin-top: 20px;
+    font-size: 22px;
+  }
 }
 
 .product__left {
@@ -27,17 +33,34 @@ $medium: 768px;
   margin-right: 180px;
   text-align: justify;
   margin-top: 150px;
+  @media screen and (max-width: $small) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 150px;
+  }
 }
 
 .product__image__container {
   width: 300px;
   height: 400px;
   position: relative;
+  @media screen and (max-width: $small) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .product__image {
   max-width: 300px;
   max-height: 400px;
+  @media screen and (max-width: $small) {
+    max-width: 250px;
+    max-height: 350px;
+  }
 }
 
 .product__price {
