@@ -19,7 +19,7 @@ const ProductCard = ({ beer }) => {
           </p>
         </div>
         <div className='product__card__button'>
-          <button className='hero-button'>AGREGAR</button>
+          <button className='hero-button'>DETALLES</button>
         </div>
       </Link>
     </div>

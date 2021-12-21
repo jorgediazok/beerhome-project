@@ -1,8 +1,9 @@
 import React from 'react';
 import OfertaCard from './OfertaCard';
 import '../../styles/OurProducts.scss';
+import Loading from '../../assets/beer.gif';
 
-const Ofertas = ({ beers, setBeers }) => {
+const Ofertas = ({ beers, setBeers, loading }) => {
   return (
     <div className='products__container'>
       <h1 className='products__title'>Las mejores cervezas en oferta</h1>
@@ -12,7 +13,11 @@ const Ofertas = ({ beers, setBeers }) => {
         verano
       </p>
       <div className='products__wrapper'>
-        <OfertaCard beers={beers} setBeers={setBeers} />
+        {loading ? (
+          <h1>Loading</h1>
+        ) : (
+          <OfertaCard beers={beers} setBeers={setBeers} />
+        )}
       </div>
     </div>
   );

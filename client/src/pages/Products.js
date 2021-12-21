@@ -1,15 +1,21 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import Pagination from '../components/Pagination';
 import '../styles/Products.scss';
 
-const Products = ({ beers }) => {
+const Products = ({ paginate, currentBeers, beersPerPage, totalBeers }) => {
   return (
     <div className='products__container'>
       <div className='products__list'>
-        {beers.map((beer) => (
+        {currentBeers.map((beer) => (
           <ProductCard key={beer.fields.id} beer={beer} />
         ))}
       </div>
+      <Pagination
+        paginate={paginate}
+        beersPerPage={beersPerPage}
+        totalBeers={totalBeers}
+      />
     </div>
   );
 };

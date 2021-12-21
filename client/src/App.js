@@ -22,17 +22,23 @@ import Footer from './components/Footer';
 
 function App() {
   const [beers, setBeers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [beersPerPage] = useState(8);
 
   //CALLING THE API
   const getData = async () => {
     try {
+      setLoading(true);
       let response = await Client.getEntries({
         content_type: 'beerHouseProject',
       });
       const fetchedBeers = await response.items;
       setBeers(fetchedBeers);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -40,17 +46,32 @@ function App() {
     getData();
   }, []);
 
+  //GET CURRENT BEERS
+  const indexOfLastBeer = currentPage * beersPerPage;
+  const indexOfFirstBeer = indexOfLastBeer - beersPerPage;
+  const currentBeers = beers.slice(indexOfFirstBeer, indexOfLastBeer);
+
+  // CHANGE PAGE
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <Router>
         <Navbar />
         <Switch>
           <Route exact path='/'>
-            <Home beers={beers} setBeers={setBeers} />
+            <Home beers={beers} setBeers={setBeers} loading={loading} />
           </Route>
           <Route exact path='/nosotros' component={Nosotros} />
           <Route exact path='/products'>
-            <Products beers={beers} setBeers={setBeers} />
+            <Products
+              paginate={paginate}
+              beers={beers}
+              currentBeers={currentBeers}
+              setBeers={setBeers}
+              totalBeers={beers.length}
+              beersPerPage={beersPerPage}
+            />
           </Route>
           <Route exact path='/products/:id'>
             <ProductSingle beers={beers} />

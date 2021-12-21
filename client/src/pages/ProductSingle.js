@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import Client from '../api/api';
 import '../styles/ProductSingle.scss';
@@ -8,20 +8,18 @@ const ProductSingle = ({ beers }) => {
   const { id } = useParams();
 
   //CALLING THE API TO GET SINGLE PRODUCT
-  const getBeer = async () => {
+  const getBeer = useCallback(async () => {
     try {
       let response = await Client.getEntry(id);
       setBeer(response.fields);
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     getBeer();
-  }, []);
-
-  console.log(beer);
+  }, [getBeer]);
 
   return (
     <div className='product__container'>
