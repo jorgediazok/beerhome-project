@@ -71,6 +71,10 @@ $medium: 768px;
 
 .product__description {
   margin-top: 30px;
+  @media screen and (max-width: $small) {
+    text-align: center;
+    max-width: 80%;
+  }
 }
 
 .product__choose {
