@@ -9,13 +9,27 @@ $medium: 768px;
 
 .testimonials__title {
   text-align: center;
+  position: relative;
+  font-weight: 500;
   margin-top: -50px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  padding-bottom: 20px;
   color: #fff;
 
   @media screen and (max-width: $small) {
     font-size: 20px;
   }
+}
+
+.testimonials__section h1::after {
+  content: '';
+  position: absolute;
+  width: 170px;
+  height: 3px;
+  bottom: 0;
+  background: #fff;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .testimonials__section .card:before {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Testimonials.scss';
+import '../styles/Testimonials.scss';
 
 const Testimonial = ({ text, image, name, profession }) => {
   return (

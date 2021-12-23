@@ -1,11 +1,11 @@
 import React from 'react';
-import Testimonial from './Testimonial';
+import Testimonial from '../Testimonial';
 import '../../styles/Testimonials.scss';
 
 const Testimonials = () => {
   return (
     <section className='testimonials__section'>
-      <h1 className='testimonials__title'>Nuestros Clientes Nos Eligen</h1>
+      <h1 className='testimonials__title'>Clientes Que Nos Eligen</h1>
       <div className='container-fluid'>
         <div className='container'>
           <div className='row'>

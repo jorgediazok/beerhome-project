@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import '../../styles/OfertaCard.scss';
+import '../styles/OfertaCard.scss';
 
 const OfertaCard = ({ beers }) => {
   const history = useHistory();

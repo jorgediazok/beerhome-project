@@ -1,7 +1,7 @@
 import React from 'react';
-import OfertaCard from './OfertaCard';
+import OfertaCard from '../OfertaCard';
 import '../../styles/OurProducts.scss';
-import Loading from '../../assets/beer.gif';
+// import Loading from '../../assets/beer.gif';
 
 const Ofertas = ({ beers, setBeers, loading }) => {
   return (
@@ -12,7 +12,7 @@ const Ofertas = ({ beers, setBeers, loading }) => {
         estándares de calidad. No te pierdas las mejores ofertas para este
         verano
       </p>
-      <div className='products__wrapper'>
+      <div className='products__wrapper animate__animated animate__fadeIn'>
         {loading ? (
           <h1>Loading</h1>
         ) : (
