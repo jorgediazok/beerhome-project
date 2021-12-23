@@ -4,7 +4,7 @@ import '../../styles/Hero.scss';
 
 const Hero = () => {
   return (
-    <div className='hero-container'>
+    <div className='hero-container animate__animated animate__fadeIn'>
       <div className='hero-title__container'>
         <div className='hero-title'>BEER HOUSE</div>
         <div className='hero-subtitle'>

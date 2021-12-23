@@ -9,9 +9,10 @@ $medium: 768px;
   background: #191919;
   display: flex;
   justify-content: center;
+  margin-top: 2em;
   align-items: center;
   width: 100vw;
-  height: 700px;
+  height: 600px;
   @media screen and (max-width: $small) {
     max-width: 100%;
     flex-direction: column;
@@ -78,7 +79,7 @@ $medium: 768px;
 
 .hero-img {
   width: 520px;
-  height: 70%;
+  height: 75%;
   filter: brightness(0.5);
   @media screen and (max-width: $small) {
     height: 50%;
