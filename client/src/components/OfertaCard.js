@@ -12,7 +12,7 @@ const OfertaCard = ({ beers }) => {
           <div
             key={beer.fields.id}
             className='productCard'
-            onClick={() => history.push(`/products/${beer.sys.id}`)}
+            onClick={() => history.push(`/tienda/${beer.sys.id}`)}
           >
             <img
               src={beer.fields.image.fields.file.url}

@@ -20,7 +20,7 @@ const Footer = () => {
           <p className='footer__text'>
             Talcahuano 1095
             <br /> Buenos Aires, 1088
-            <br /> (011) 35494908
+            <br /> (011) 22334455
           </p>
         </div>
         <div className='footer__card'>

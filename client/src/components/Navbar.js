@@ -25,21 +25,13 @@ const Navbar = () => {
         </div>
         <ul className={clickMenu ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav__item'>
-            <Link
-              to='/nosotros'
-              className='nav__links'
-              onClick={closeMobileMenu}
-            >
+            <Link to='/' className='nav__links' onClick={closeMobileMenu}>
               NOSOTROS
             </Link>
           </li>
           <li className='nav__item'>
-            <Link
-              to='/products'
-              className='nav__links'
-              onClick={closeMobileMenu}
-            >
-              PRODUCTOS
+            <Link to='/' className='nav__links' onClick={closeMobileMenu}>
+              OFERTAS
             </Link>
           </li>
           <li className='nav__item'>

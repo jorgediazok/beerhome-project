@@ -1,9 +1,9 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
-import Pagination from '../components/Pagination';
+import Pagination from '../utils/Pagination';
 import '../styles/Products.scss';
 
-const Products = ({ paginate, currentBeers, beersPerPage, totalBeers }) => {
+const Tienda = ({ paginate, currentBeers, beersPerPage, totalBeers }) => {
   return (
     <div className='products__container'>
       <div className='products__list'>
@@ -20,4 +20,4 @@ const Products = ({ paginate, currentBeers, beersPerPage, totalBeers }) => {
   );
 };
 
-export default Products;
+export default Tienda;

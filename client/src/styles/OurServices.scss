@@ -4,6 +4,7 @@ $medium: 768px;
 
 .services {
   padding: 100px 0;
+  width: 100vw;
 }
 
 .services__container {
@@ -56,6 +57,7 @@ $medium: 768px;
 
   &:hover {
     color: #fff;
+    cursor: pointer;
   }
 
   @media screen and (max-width: $medium) {

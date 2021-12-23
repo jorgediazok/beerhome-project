@@ -7,13 +7,10 @@ import Client from './api/api';
 //Pages for routing
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Nosotros from './pages/Nosotros';
-import Shop from './pages/Shop';
-import ProductSingle from './pages/ProductSingle';
-import Products from './pages/Products';
+import Tienda from './pages/Tienda';
+import TiendaDetails from './pages/TiendaDetails';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
-import Success from './pages/Success';
 import PageNotFound from './pages/PageNotFound';
 
 //Components
@@ -62,9 +59,8 @@ function App() {
           <Route exact path='/'>
             <Home beers={beers} setBeers={setBeers} loading={loading} />
           </Route>
-          <Route exact path='/nosotros' component={Nosotros} />
-          <Route exact path='/products'>
-            <Products
+          <Route exact path='/tienda'>
+            <Tienda
               paginate={paginate}
               beers={beers}
               currentBeers={currentBeers}
@@ -73,14 +69,12 @@ function App() {
               beersPerPage={beersPerPage}
             />
           </Route>
-          <Route exact path='/products/:id'>
-            <ProductSingle beers={beers} />
+          <Route exact path='/tienda/:id'>
+            <TiendaDetails beers={beers} />
           </Route>
-          <Route exact path='/cart' component={Shop} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/cart' component={Cart} />
           <Route exact path='/checkout' component={Checkout} />
-          <Route exact path='/success' component={Success} />
           <Route path='*' component={PageNotFound} />
         </Switch>
         <Footer />
