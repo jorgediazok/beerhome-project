@@ -7,6 +7,7 @@ import Ofertas from '../components/HomeSections/Ofertas';
 import Testimonials from '../components/HomeSections/Testimonials';
 import OurServices from '../components/HomeSections/OurServices';
 import Contacto from '../components/HomeSections/Contacto';
+import About from '../components/HomeSections/About';
 
 const Home = ({ beers, setBeers, loading }) => {
   return (
@@ -14,6 +15,7 @@ const Home = ({ beers, setBeers, loading }) => {
       <Hero />
       <Ofertas beers={beers} setBeers={setBeers} loading={loading} />
       <OurServices />
+      <About />
       <Testimonials />
       <Contacto />
     </div>
