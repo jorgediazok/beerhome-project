@@ -5,7 +5,7 @@ import '../../styles/OurProducts.scss';
 
 const Ofertas = ({ beers, setBeers, loading }) => {
   return (
-    <div className='products__container'>
+    <div className='products__container' id='ofertas'>
       <h1 className='products__title'>Cervezas En Oferta</h1>
       <p className='products__description'>
         Importadas desde los países con más tradición cervecera y bajo estrictos

@@ -5,7 +5,7 @@ import '../../styles/About.scss';
 
 const About = () => {
   return (
-    <section>
+    <section id='nosotros'>
       <div className='about wrapper'>
         <div className='container'>
           <h1 className='about__title'>Nuestra Historia</h1>
