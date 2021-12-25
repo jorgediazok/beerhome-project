@@ -115,7 +115,7 @@ const Navbar = () => {
   } else {
     return (
       <>
-        <nav className='navigation' scrollnav={scrollNav}>
+        <nav className='navigation' scrollnav={scrollNav.toString()}>
           <a href='/' className='navbar-logotype' onClick={toggleHome}>
             BEERHOUSE
           </a>
