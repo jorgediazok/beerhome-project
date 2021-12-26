@@ -10,7 +10,7 @@ section {
 }
 
 .login {
-  max-height: 750px;
+  max-height: 800px;
   @media screen and (max-width: $small) {
     max-height: 1150px;
   }
@@ -111,4 +111,20 @@ section {
 .form-error2 {
   margin-top: 1rem;
   font-size: 1rem;
+}
+
+.login__account {
+  margin-top: 100px !important;
+  color: #191919;
+  font-weight: bold;
+  cursor: pointer;
+  @media screen and (max-width: $small) {
+    font-size: 12px;
+  }
+}
+
+.login__account__container {
+  margin-top: 30px;
+  margin-left: 25px;
+  margin-bottom: -30px;
 }

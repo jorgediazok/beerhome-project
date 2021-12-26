@@ -5,26 +5,17 @@ import { useDispatch } from 'react-redux';
 //IMAGE OF LOGIN CONTAINER
 import Image from '../assets/images/beerhouse5.jpg';
 
-//FOR API CALL
-import axios from 'axios';
-
-//TOAST
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 //ICONS
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
 
+//ACTIONS
+import { signin, signup } from '../actions/auth';
+
 //STYLES
 import '../styles/Login.scss';
 
-//TOAST CONFIGURATION
-toast.configure();
-
 const initialState = {
-  firstName: '',
-  lastName: '',
   email: '',
   password: '',
   confirmPassword: '',
@@ -35,16 +26,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
-  const [success, setSuccess] = useState(null);
-  const [error, setError] = useState(null);
-
-  //TOAST FUNCTION
-  const notify = () => {
-    toast('Login Succesful', { position: toast.POSITION.TOP_LEFT });
-  };
 
   const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword(!showPassword);
+  // const handleShowPassword = () => setShowPassword(!showPassword);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -57,11 +41,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (isSignup) {
-      // dispatch(signup(form, history));
+      dispatch(signup(form, history));
     } else {
-      // dispatch(signin(form, history));
+      dispatch(signin(form, history));
     }
   };
 
@@ -79,8 +62,6 @@ const Login = () => {
               </h1>
               <form onSubmit={handleSubmit}>
                 <div className='form-row pt-4'>
-                  {!error && success ? success : ''}
-                  {!success && error ? error : ''}
                   <div className='offset-1 col-lg-10'>
                     <input
                       id='email'
@@ -93,7 +74,7 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                <div className='form-row pt-3'>
+                <div className='form-row pt-4'>
                   <div className='offset-1 col-lg-10'>
                     <input
                       id='password'
@@ -105,10 +86,34 @@ const Login = () => {
                     />
                   </div>
                 </div>
+                {isSignup && (
+                  <>
+                    <div className='form-row pt-4'>
+                      <div className='offset-1 col-lg-10'>
+                        <input
+                          id='password'
+                          name='confirmPassword'
+                          type='password'
+                          placeholder='Password'
+                          // handleShowPassword={handleShowPassword}
+                          onChange={handleChange}
+                          className='input-password px-3'
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
+                <div className='login__account__container'>
+                  <span className='login__account' onClick={switchMode}>
+                    {isSignup
+                      ? '¿Ya tenés una cuenta? Logueate'
+                      : '¿No tenés una cuenta? Registrate'}
+                  </span>
+                </div>
                 <div className='form-row pt-4 pb-3'>
                   <div className='offset-1 col-lg-10'>
                     <button className='btn-login mt-3' type='submit'>
-                      INGRESAR
+                      {isSignup ? 'Registrarse' : 'Ingresar'}
                     </button>
                   </div>
                 </div>

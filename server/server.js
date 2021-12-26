@@ -1,12 +1,22 @@
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
+const userRoutes = require('./routes/users');
+
+//Set App
+const app = express();
 
 //Middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+
+//Using Route
+app.use('/user', userRoutes);
 
 //Conexión a la Base de Datos en MONGO DB
 mongoose

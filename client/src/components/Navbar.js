@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { animateScroll as scroll, Link as ScrollLink } from 'react-scroll';
+import { useDispatch } from 'react-redux';
 import '../styles/Navbar.scss';
 
 const Navbar = () => {
   //States
   const [clickMenu, setClickMenu] = useState(false);
   const [scrollNav, setScrollNav] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
 
   const changeNav = () => {
     if (window.scrollY >= 80) {
