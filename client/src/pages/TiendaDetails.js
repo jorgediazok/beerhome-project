@@ -21,6 +21,10 @@ const ProductSingle = ({ beers }) => {
     getBeer();
   }, [getBeer]);
 
+  useEffect(() => {
+    window.scrollTo(0, 40);
+  }, []);
+
   return (
     <div className='product__container'>
       <div className='product__left'>
