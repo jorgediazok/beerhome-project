@@ -27,16 +27,12 @@ const Login = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
 
-  const [showPassword, setShowPassword] = useState(false);
-  // const handleShowPassword = () => setShowPassword(!showPassword);
-
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const switchMode = () => {
     setForm(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
-    setShowPassword(false);
   };
 
   const handleSubmit = (e) => {

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { animateScroll as scroll, Link as ScrollLink } from 'react-scroll';
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
+import * as actionType from '../constants/actionTypes';
 import '../styles/Navbar.scss';
 
 const Navbar = () => {
@@ -9,10 +11,18 @@ const Navbar = () => {
   const [clickMenu, setClickMenu] = useState(false);
   const [scrollNav, setScrollNav] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  const dispatch = useDispatch();
   const location = useLocation();
+  const dispatch = useDispatch();
   const history = useHistory();
 
+  //FUNCION DE LOGOUT
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+    history.push('/login');
+    setUser(null);
+  };
+
+  //PARA EL SMOOTH SCROLLING
   const changeNav = () => {
     if (window.scrollY >= 80) {
       setScrollNav(true);
@@ -28,6 +38,21 @@ const Navbar = () => {
   const toggleHome = () => {
     scroll.scrollToTop();
   };
+
+  //LOCAL STORAGE
+
+  useEffect(() => {
+    const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   //Controla el state del burger menu
   const handleClick = () => setClickMenu(!clickMenu);
@@ -99,13 +124,19 @@ const Navbar = () => {
               </Link>
             </li>
             <li className='nav__item'>
-              <Link
-                to='/login'
-                className='nav__links'
-                onClick={closeMobileMenu}
-              >
-                LOGIN
-              </Link>
+              {user ? (
+                <Link to='/login' className='nav__links' onClick={logout}>
+                  LOGOUT
+                </Link>
+              ) : (
+                <Link
+                  to='/login'
+                  className='nav__links'
+                  onClick={closeMobileMenu}
+                >
+                  LOGIN
+                </Link>
+              )}
             </li>
             {/* <li className='nav__item'>
               <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
@@ -138,13 +169,19 @@ const Navbar = () => {
               </Link>
             </li>
             <li className='nav__item'>
-              <Link
-                to='/login'
-                className='nav__links'
-                onClick={closeMobileMenu}
-              >
-                LOGIN
-              </Link>
+              {user ? (
+                <Link to='/login' className='nav__links' onClick={logout}>
+                  LOGOUT
+                </Link>
+              ) : (
+                <Link
+                  to='/login'
+                  className='nav__links'
+                  onClick={closeMobileMenu}
+                >
+                  LOGIN
+                </Link>
+              )}
             </li>
             {/* <li className='nav__item'>
               <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
