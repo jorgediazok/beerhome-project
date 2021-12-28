@@ -1,3 +1,6 @@
+@import '../index.scss';
+@import '../index.scss';
+
 $small: 411px;
 $medium: 768px;
 
@@ -9,7 +12,7 @@ $medium: 768px;
   @media screen and (max-width: $small) {
     flex-direction: column;
     justify-content: center;
-    margin-top: 180px;
+    margin-top: 420px;
   }
 }
 
@@ -39,7 +42,6 @@ $medium: 768px;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    margin-bottom: 150px;
   }
 }
 
@@ -88,27 +90,4 @@ $medium: 768px;
   font-size: 14px;
   font-weight: 500;
   margin-top: 20px;
-}
-
-.product__button {
-  margin-top: 40px !important;
-  background-color: #fff;
-  color: #191919;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.4em;
-  outline: none;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 auto;
-  &:hover {
-    background-color: #fb8f2a;
-  }
-  @media screen and (max-width: $small) {
-    padding: 1em;
-  }
 }

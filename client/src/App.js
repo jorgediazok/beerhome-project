@@ -21,7 +21,7 @@ function App() {
   const [beers, setBeers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [beersPerPage] = useState(8);
+  const [beersPerPage] = useState(4);
 
   //CALLING THE API
   const getData = async () => {

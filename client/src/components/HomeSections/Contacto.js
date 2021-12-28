@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/Contacto.scss';
 
+//TOAST
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+//TOAST CONFIGURATION
+toast.configure();
+
+//TOAST FUNCTION
+const notify = () => {
+  toast('Mensaje enviado. Te contestamos a la brevedad. Gracias!', {
+    position: toast.POSITION.TOP_LEFT,
+  });
+};
+
+const initialState = {
+  name: '',
+  email: '',
+  message: '',
+};
+
 const Contacto = () => {
+  const [form, setForm] = useState(initialState);
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setForm(initialState);
+    notify();
+  };
+
   return (
     <div className='contact' id='contacto'>
       <div className='contact__content'>
@@ -45,19 +76,38 @@ const Contacto = () => {
           <form>
             <h2 className='contact__form__title'>Enviar Mensaje</h2>
             <div className='contact__form__input'>
-              <input type='text' name='' required='required' />
+              <input
+                type='text'
+                name='name'
+                required='required'
+                onChange={handleChange}
+              />
               <span>Nombre</span>
             </div>
             <div className='contact__form__input'>
-              <input type='email' name='' required='required' />
+              <input
+                type='email'
+                name='email'
+                required='required'
+                onChange={handleChange}
+              />
               <span>Email</span>
             </div>
             <div className='contact__form__input'>
-              <textarea required='required' name='' />
+              <textarea
+                required='required'
+                name='message'
+                onChange={handleChange}
+              />
               <span>Mensaje</span>
             </div>
             <div className='contact__form__input'>
-              <input type='submit' name='' value='Enviar' />
+              <input
+                type='submit'
+                name=''
+                value='Enviar'
+                onClick={handleSubmit}
+              />
             </div>
           </form>
         </div>

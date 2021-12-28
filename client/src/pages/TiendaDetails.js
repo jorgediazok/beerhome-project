@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import Client from '../api/api';
-import '../styles/ProductSingle.scss';
+import ItemCount from '../components/ItemCount';
+import '../styles/TiendaDetails.scss';
 
 const ProductSingle = ({ beers }) => {
+  const [quantityItems, setQuantityItems] = useState(0);
   const [beer, setBeer] = useState({});
   const { id } = useParams();
 
@@ -25,6 +27,14 @@ const ProductSingle = ({ beers }) => {
     window.scrollTo(0, 40);
   }, []);
 
+  const onAdd = (count) => {
+    if (count === 0) {
+      return;
+    }
+    setQuantityItems(count);
+    // saveItem({ item: item, quantity: count });
+  };
+
   return (
     <div className='product__container'>
       <div className='product__left'>
@@ -41,19 +51,9 @@ const ProductSingle = ({ beers }) => {
         <span className='product__price'>${beer.price}</span>
         <p className='product__description'>{beer.descriptionExtended}</p>
         <h3 className='product__choose'>Elija la cantidad</h3>
-        <div className='product__quantity'>
-          <div className='product__options'>
-            <select
-              type='select'
-              id='quantity'
-              name='quantity'
-              className='product__input'
-            />
-          </div>
+        <div className='product__itemCount'>
+          <ItemCount stock={10} onAdd={onAdd} initial={1} />
         </div>
-        <button type='submit' className='hero-button'>
-          COMPRAR
-        </button>
       </div>
     </div>
   );

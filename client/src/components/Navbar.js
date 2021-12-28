@@ -141,7 +141,7 @@ const Navbar = () => {
             {/* <li className='nav__item'>
               <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
                 <i className='fas fa-cart-arrow-down cart-icon' />
-                <div className='counter'>2</div>
+                <div className='counter__icon'>2</div>
               </Link>
             </li> */}
           </ul>
