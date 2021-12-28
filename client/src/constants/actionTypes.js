@@ -1,9 +1,7 @@
 //AUTH
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
-export const ADD_ITEMS = 'ADD_ITEMS';
-export const DELETE_ITEM = 'DELETE_ITEM';
-export const INCREASE_ITEM = 'INCREASE_ITEM';
-export const DECREASE_ITEM = 'DECREASE_ITEM';
-export const TOTAL_ITEMS = 'TOTAL_ITEMS';
-export const GET_ITEMS = 'GET_ITEMS';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const ADJUST_QTY = 'ADJUST_QTY';
+export const LOAD_CURRENT_ITEM = 'LOAD_CURRENT_ITEM';

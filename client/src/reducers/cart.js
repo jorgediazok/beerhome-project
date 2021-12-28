@@ -1,102 +1,50 @@
-import {
-  GET_ITEMS,
-  ADD_ITEMS,
-  DELETE_ITEM,
-  INCREASE_ITEM,
-  DECREASE_ITEM,
-  TOTAL_ITEMS,
-} from '../constants/actionTypes';
+import * as actionTypes from '../constants/actionTypes';
 
 const initialState = {
-  items: [],
+  products: [],
+  cartItems: [],
+  currentItem: null,
 };
 
-const Todos = (state = initialState, action) => {
+const shoppingReducer = (state = initialState, action) => {
   switch (action.type) {
-    // get initial state
-    case GET_ITEMS:
-      return {
-        ...state,
-      };
-
-    //   add items to cart
-    // eslint-disable-next-line no-fallthrough
-    case ADD_ITEMS:
-      let check = state.cart.find((item) => item._id === action.payload);
-
-      if (!check) {
-        // bringing only the ites that match the id
-        let items = state.items.filter((item) => item._id === action.payload);
-        let itemsCart = [...state.cart, ...items];
-
-        return {
-          ...state,
-          cart: itemsCart,
-        };
-      } else {
-        let items = state.items.filter((item) => item._id === action.payload);
-
-        items.forEach((item) => {
-          item.isInCart = true;
-          alert(`already in cart`);
-        });
-
-        return {
-          ...state,
-        };
-      }
-
-    // delete item
-    case DELETE_ITEM:
-      const filteredCart = state.cart.filter(
-        (item) => item._id !== action.payload
+    case actionTypes.ADD_TO_CART:
+      //Get the items data from the products array
+      const item = state.products.find(
+        (product) => product.id === action.payload.id
       );
-
+      //Check if item is in the cart already
+      const inCart = state.cart.find((item) =>
+        item.id === action.payload.id ? true : false
+      );
       return {
         ...state,
-        cart: filteredCart,
+        cart: inCart
+          ? state.cart.map((item) =>
+              item.id === action.payload.id
+                ? { ...item, qty: item.qty + 1 }
+                : item
+            )
+          : [...state.cart, { ...item, qty: 1 }],
       };
-
-    // increasing ites inside cart
-    case INCREASE_ITEM:
-      let incResults = state.cart.map((item) => {
-        if (item._id === action.payload) {
-          item = { ...item, count: item.count + 1 };
-        }
-        return item;
-      });
-
+    case actionTypes.REMOVE_FROM_CART:
       return {
         ...state,
-        cart: incResults,
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
-
-    // decrease item inside the cart
-    case DECREASE_ITEM:
-      let decResults = state.cart.map((item) => {
-        if (item._id === action.payload) {
-          item = {
-            ...item,
-            count: item.count === 1 ? (item.count = 1) : item.count - 1,
-          };
-        }
-        return item;
-      });
-
+    case actionTypes.ADJUST_QTY:
       return {
         ...state,
-        cart: decResults,
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, qty: +action.payload.qty }
+            : item
+        ),
       };
-
-    //get total price
-    case TOTAL_ITEMS:
-      const totals = state.cart.reduce((prev, item) => {
-        return prev + item.price * item.count;
-      }, 0);
-
+    case actionTypes.LOAD_CURRENT_ITEM:
       return {
         ...state,
-        total: totals,
+        currentItem: action.payload,
       };
 
     default:
@@ -104,4 +52,4 @@ const Todos = (state = initialState, action) => {
   }
 };
 
-export default Todos;
+export default shoppingReducer;
