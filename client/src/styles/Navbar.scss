@@ -34,8 +34,7 @@ $medium: 768px;
   }
 }
 
-.nav__links,
-.cart-icon {
+.nav__links {
   background-image: linear-gradient(45deg, nth($colors, 3), nth($colors, 4));
   background-size: 100%;
   background-clip: text;
@@ -98,7 +97,7 @@ $medium: 768px;
 
 .cart-icon {
   padding-left: 0.9em;
-  position: relative;
+  margin-top: -10px;
 
   @media screen and (max-width: $small) {
     padding-left: 0;
@@ -107,7 +106,7 @@ $medium: 768px;
 
 .counter__icon {
   position: absolute;
-  top: 20px;
+  top: 28px;
   right: 95px;
   width: 15px;
   height: 15px;
@@ -117,10 +116,10 @@ $medium: 768px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: white;
   @media screen and (max-width: $small) {
-    top: 440px;
-    right: 165px;
+    top: 474px;
+    right: 143px;
   }
 }
 

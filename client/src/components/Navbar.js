@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { animateScroll as scroll, Link as ScrollLink } from 'react-scroll';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
 import * as actionType from '../constants/actionTypes';
 import '../styles/Navbar.scss';
@@ -11,6 +11,7 @@ const Navbar = () => {
   const [clickMenu, setClickMenu] = useState(false);
   const [scrollNav, setScrollNav] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const cart = useSelector((state) => state.cart);
   const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -138,12 +139,14 @@ const Navbar = () => {
                 </Link>
               )}
             </li>
-            {/* <li className='nav__item'>
+            <li className='nav__item'>
               <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
-                <i className='fas fa-cart-arrow-down cart-icon' />
-                <div className='counter__icon'>2</div>
+                <i className='fas fa-cart-arrow-down' />
+                <div className='counter__icon'>
+                  <span style={{ color: '#fff' }}>{cart.length}</span>
+                </div>
               </Link>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </>
@@ -183,12 +186,14 @@ const Navbar = () => {
                 </Link>
               )}
             </li>
-            {/* <li className='nav__item'>
+            <li className='nav__item'>
               <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
                 <i className='fas fa-cart-arrow-down cart-icon' />
-                <div className='counter'>2</div>
+                <div className='counter__icon'>
+                  <span style={{ color: '#fff' }}>{cart.length}</span>
+                </div>
               </Link>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </>

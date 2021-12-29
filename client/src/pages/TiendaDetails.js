@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Client from '../api/api';
-import ItemCount from '../components/ItemCount';
 import '../styles/TiendaDetails.scss';
 
-const ProductSingle = ({ beers }) => {
-  const [quantityItems, setQuantityItems] = useState(0);
+const ProductSingle = () => {
   const [beer, setBeer] = useState({});
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  console.log(cart);
 
   //CALLING THE API TO GET SINGLE PRODUCT
   const getBeer = useCallback(async () => {
@@ -27,14 +30,6 @@ const ProductSingle = ({ beers }) => {
     window.scrollTo(0, 40);
   }, []);
 
-  const onAdd = (count) => {
-    if (count === 0) {
-      return;
-    }
-    setQuantityItems(count);
-    // saveItem({ item: item, quantity: count });
-  };
-
   return (
     <div className='product__container'>
       <div className='product__left'>
@@ -50,9 +45,17 @@ const ProductSingle = ({ beers }) => {
         <h1 className='product__title'>{beer.name}</h1>
         <span className='product__price'>${beer.price}</span>
         <p className='product__description'>{beer.descriptionExtended}</p>
-        <h3 className='product__choose'>Elija la cantidad</h3>
         <div className='product__itemCount'>
-          <ItemCount stock={10} onAdd={onAdd} initial={1} />
+          <div className='itemCount'>
+            <div className='btn-cart-container'>
+              <button
+                onClick={() => dispatch({ type: 'ADD_TO_CART', payload: beer })}
+                className='btn-cart'
+              >
+                Agregar Al Carro
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
