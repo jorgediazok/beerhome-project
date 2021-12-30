@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { removeFromCart } from '../actions/cart';
 import '../styles/CartItem.scss';
 
-const CartItem = ({ itemData }) => {
-  const [input, setInput] = useState(itemData);
-  console.log(itemData);
-
-  const onChangeHandler = (e) => {
-    setInput(e.target.value);
-  };
-
+const CartItem = ({ itemData, qty, onChangeHandler }) => {
   return (
     <div className='cartItem'>
       <img
@@ -23,24 +17,21 @@ const CartItem = ({ itemData }) => {
       </div>
       <div className='cartItem__actions'>
         <div className='cartItem__qty'>
-          <label htmlFor='qty'>Qty</label>
+          <label htmlFor='qty'>Cantidad</label>
           <input
             min='1'
             type='number'
             id='qty'
             name='qty'
-            value={input}
+            value={qty}
             onChange={onChangeHandler}
           />
         </div>
         <button
-          // onClick={() => removeFromCart(itemData.id)}
+          onClick={() => removeFromCart(itemData.id)}
           className='cartItem__actions__deleteItemBtn'
         >
-          <img
-            src='https://image.flaticon.com/icons/svg/709/709519.svg'
-            alt=''
-          />
+          <i className='fas fa-trash-alt'></i>
         </button>
       </div>
     </div>

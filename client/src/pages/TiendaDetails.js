@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../actions/cart';
 import Client from '../api/api';
 import '../styles/TiendaDetails.scss';
 
-const ProductSingle = () => {
-  const [beer, setBeer] = useState({});
+const TiendaDetails = () => {
+  const [beer, setBeer] = useState([]);
   const { id } = useParams();
-  const dispatch = useDispatch();
+
+  //REDUX
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   console.log(cart);
 
@@ -49,7 +52,7 @@ const ProductSingle = () => {
           <div className='itemCount'>
             <div className='btn-cart-container'>
               <button
-                onClick={() => dispatch({ type: 'ADD_TO_CART', payload: beer })}
+                onClick={() => dispatch(addToCart(beer))}
                 className='btn-cart'
               >
                 Agregar Al Carro
@@ -62,4 +65,4 @@ const ProductSingle = () => {
   );
 };
 
-export default ProductSingle;
+export default TiendaDetails;
