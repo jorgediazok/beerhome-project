@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../actions/cart';
 import Client from '../api/api';
 //TOAST
@@ -25,10 +25,7 @@ const TiendaDetails = () => {
   };
 
   //REDUX
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  console.log(cart);
 
   const addItem = (item, qty) => {
     dispatch(addToCart(item, qty));

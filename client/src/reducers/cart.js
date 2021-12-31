@@ -1,17 +1,37 @@
-import { ADD_TO_CART, REMOVE_ONE_FROM_CART } from '../constants/actionTypes';
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  CLEAR_CART,
+} from '../constants/actionTypes';
 
-const cartReducer = (cart = [], action) => {
+const initialState = {
+  cartItems: [],
+  totalPrice: 0,
+};
+
+const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TO_CART: {
-      return [...cart, action.payload];
-    }
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+        totalPrice: state.totalPrice + action.payload.price,
+      };
 
-    case REMOVE_ONE_FROM_CART: {
-      return cart.filter((item) => item.id !== action.payload.id);
-    }
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem !== action.payload
+        ),
+        totalPrice: state.totalPrice - action.payload.price,
+      };
+
+    case CLEAR_CART:
+      return { ...initialState };
 
     default:
-      return cart;
+      return state;
   }
 };
 

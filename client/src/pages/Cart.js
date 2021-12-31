@@ -5,31 +5,31 @@ import '../styles/Cart.scss';
 import CartItem from '../components/CartItem';
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
-  console.log(cart);
+  console.log(cartItems);
 
   useEffect(() => {
     let items = 0;
     let price = 0;
 
-    cart.forEach((item) => {
+    cartItems.forEach((item) => {
       items += item.qty;
-      price += item.qty * item.price;
+      price += item.qty * item.item.price;
     });
 
     setTotalItems(items);
     setTotalPrice(price);
-  }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
+  }, [cartItems, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
   return (
     <div className='cart'>
       <div className='cart__items'>
-        {cart?.map((beer, index) => (
-          <CartItem key={index} itemData={beer} />
+        {cartItems?.map((beer) => (
+          <CartItem key={beer.item.id} itemData={beer} />
         ))}
       </div>
       <div className='cart__summary'>

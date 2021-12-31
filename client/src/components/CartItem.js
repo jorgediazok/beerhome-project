@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { REMOVE_ONE_FROM_CART } from '../constants/actionTypes';
+import { REMOVE_FROM_CART } from '../constants/actionTypes';
 import '../styles/CartItem.scss';
 
 const CartItem = ({ itemData }) => {
   const [cantidad, setCantidad] = useState(itemData.qty);
   const dispatch = useDispatch();
-  console.log(itemData);
 
   const changeQuantity = (e) => {
     setCantidad(e.target.value);
@@ -14,6 +13,7 @@ const CartItem = ({ itemData }) => {
 
   return (
     <div className='cartItem'>
+      {itemData.length === 0 && alert('NO HAY BIRRA')}
       <img
         className='cartItem__image'
         src={itemData.item.image.fields.file.url}
@@ -24,7 +24,9 @@ const CartItem = ({ itemData }) => {
         <p className='cartItem__details__description'>
           {itemData.item.description}
         </p>
-        <p className='cartItem__details__price'>$ {itemData.item.price}</p>
+        <p className='cartItem__details__price'>
+          Precio c/u: $ {itemData.item.price}
+        </p>
       </div>
       <div className='cartItem__actions'>
         <div className='cartItem__qty'>
@@ -40,7 +42,10 @@ const CartItem = ({ itemData }) => {
         </div>
         <button
           onClick={() =>
-            dispatch({ type: REMOVE_ONE_FROM_CART, payload: itemData })
+            dispatch({
+              type: REMOVE_FROM_CART,
+              payload: itemData,
+            })
           }
           className='cartItem__actions__deleteItemBtn'
         >
