@@ -3,17 +3,48 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../actions/cart';
 import Client from '../api/api';
+//TOAST
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//STYLES
 import '../styles/TiendaDetails.scss';
 
 const TiendaDetails = () => {
+  const [cantidad, setCantidad] = useState(1);
   const [beer, setBeer] = useState([]);
   const { id } = useParams();
+
+  //TOAST CONFIGURATION
+  toast.configure();
+
+  //TOAST FUNCTION
+  const notify = () => {
+    toast('Cerveza agregada', {
+      position: toast.POSITION.TOP_LEFT,
+    });
+  };
 
   //REDUX
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   console.log(cart);
+
+  const addItem = (item, qty) => {
+    dispatch(addToCart(item, qty));
+    notify();
+  };
+
+  const handleAdd = () => {
+    setCantidad(cantidad + 1);
+  };
+  const handleRemove = () => {
+    if (cantidad === 0) {
+      return;
+    } else {
+      setCantidad(cantidad - 1);
+    }
+  };
 
   //CALLING THE API TO GET SINGLE PRODUCT
   const getBeer = useCallback(async () => {
@@ -50,9 +81,18 @@ const TiendaDetails = () => {
         <p className='product__description'>{beer.descriptionExtended}</p>
         <div className='product__itemCount'>
           <div className='itemCount'>
+            <div className='btn-container'>
+              <button onClick={handleAdd} className='btn-counter'>
+                +
+              </button>
+              <p className='counter'>{cantidad}</p>
+              <button onClick={handleRemove} className='btn-counter'>
+                -
+              </button>
+            </div>
             <div className='btn-cart-container'>
               <button
-                onClick={() => dispatch(addToCart(beer))}
+                onClick={() => addItem(beer, cantidad)}
                 className='btn-cart'
               >
                 Agregar Al Carro
