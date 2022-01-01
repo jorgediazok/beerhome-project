@@ -13,7 +13,6 @@ const CartItem = ({ itemData }) => {
 
   return (
     <div className='cartItem'>
-      {itemData.length === 0 && alert('NO HAY BIRRA')}
       <img
         className='cartItem__image'
         src={itemData.item.image.fields.file.url}
@@ -25,7 +24,7 @@ const CartItem = ({ itemData }) => {
           {itemData.item.description}
         </p>
         <p className='cartItem__details__price'>
-          Precio c/u: $ {itemData.item.price}
+          Precio p/u: <br /> <b>$ {itemData.item.price}</b>
         </p>
       </div>
       <div className='cartItem__actions'>
@@ -39,18 +38,18 @@ const CartItem = ({ itemData }) => {
             onChange={changeQuantity}
             value={cantidad}
           />
+          <button
+            onClick={() =>
+              dispatch({
+                type: REMOVE_FROM_CART,
+                payload: itemData,
+              })
+            }
+            className='cartItem__actions__deleteItemBtn'
+          >
+            <i className='fas fa-trash-alt'></i>
+          </button>
         </div>
-        <button
-          onClick={() =>
-            dispatch({
-              type: REMOVE_FROM_CART,
-              payload: itemData,
-            })
-          }
-          className='cartItem__actions__deleteItemBtn'
-        >
-          <i className='fas fa-trash-alt'></i>
-        </button>
       </div>
     </div>
   );

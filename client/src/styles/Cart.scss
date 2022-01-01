@@ -1,14 +1,30 @@
+@import '../index.scss';
+@import '../index.scss';
+
+$small: 411px;
+$medium: 768px;
+
 .cart {
   margin: 10rem auto;
   padding: 0 30px;
   width: 100vw;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: $small) {
+    flex-direction: column;
+    margin: 7rem auto;
+    flex-wrap: wrap;
+  }
 }
 
 .cart__items {
   flex: 0.7;
   margin-right: 1rem;
+  @media screen and (max-width: $small) {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+  }
 }
 
 .cart__summary {
@@ -45,10 +61,7 @@
 
 .cart__summary__checkoutBtn {
   padding: 10px 17px;
-  // border: 1px solid var(--secondary-color);
   border-radius: 10px;
-  // background: var(--primary-color);
-  // color: var(--light-color);
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
