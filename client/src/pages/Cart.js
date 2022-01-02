@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/Cart.scss';
 
@@ -28,9 +29,22 @@ const Cart = () => {
   return (
     <div className='cart'>
       <div className='cart__items'>
-        {cartItems?.map((beer) => (
-          <CartItem key={beer.item.id} itemData={beer} />
-        ))}
+        {cartItems.length === 0 ? (
+          <div className='cart__no__beer__container'>
+            <h1 className='cart__no__beer__message'>
+              No hay cervezas en el carro
+            </h1>
+            <Link to='/tienda'>
+              <button className='cart__no__beer__backToStore__button'>
+                Ir a la Tienda
+              </button>
+            </Link>
+          </div>
+        ) : (
+          cartItems?.map((beer) => (
+            <CartItem key={beer.item.id} itemData={beer} />
+          ))
+        )}
       </div>
       <div className='cart__summary'>
         <h4 className='cart__summary__title'>En tu carro:</h4>

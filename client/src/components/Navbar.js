@@ -140,10 +140,12 @@ const Navbar = () => {
               )}
             </li>
             <li className='nav__item'>
-              <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
-                <i className='fas fa-cart-arrow-down' />
+              <Link to='/cart' onClick={closeMobileMenu}>
+                <i className='fas fa-cart-arrow-down cart__icon' />
                 <div className='counter__icon'>
-                  <span style={{ color: '#fff' }}>{cart.length}</span>
+                  <span className='counter__icon__text'>
+                    {cart.cartItems.length}
+                  </span>
                 </div>
               </Link>
             </li>
@@ -187,10 +189,12 @@ const Navbar = () => {
               )}
             </li>
             <li className='nav__item'>
-              <Link to='/cart' className='nav__links' onClick={closeMobileMenu}>
-                <i className='fas fa-cart-arrow-down cart-icon' />
-                <div className='counter__icon'>
-                  <span style={{ color: '#fff' }}>{cart.length}</span>
+              <Link to='/cart' onClick={closeMobileMenu}>
+                <i className='fas fa-cart-arrow-down cart__icon' />
+                <div className='counter__icon__two'>
+                  <span className='counter__icon__text'>
+                    {cart.cartItems.length}
+                  </span>
                 </div>
               </Link>
             </li>

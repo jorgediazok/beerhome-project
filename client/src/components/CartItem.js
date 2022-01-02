@@ -38,18 +38,18 @@ const CartItem = ({ itemData }) => {
             onChange={changeQuantity}
             value={cantidad}
           />
-          <button
-            onClick={() =>
-              dispatch({
-                type: REMOVE_FROM_CART,
-                payload: itemData,
-              })
-            }
-            className='cartItem__actions__deleteItemBtn'
-          >
-            <i className='fas fa-trash-alt'></i>
-          </button>
         </div>
+        <button
+          onClick={() =>
+            dispatch({
+              type: REMOVE_FROM_CART,
+              payload: itemData,
+            })
+          }
+          className='cartItem__actions__deleteItemBtn'
+        >
+          <i className='fas fa-trash-alt'></i>
+        </button>
       </div>
     </div>
   );
