@@ -11,8 +11,6 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
-  console.log(cartItems);
-
   useEffect(() => {
     let items = 0;
     let price = 0;
@@ -41,8 +39,8 @@ const Cart = () => {
             </Link>
           </div>
         ) : (
-          cartItems?.map((beer) => (
-            <CartItem key={beer.item.id} itemData={beer} />
+          cartItems?.map((beer, index) => (
+            <CartItem key={beer.item.id} itemData={beer} index={index} />
           ))
         )}
       </div>

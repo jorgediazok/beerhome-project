@@ -79,18 +79,18 @@ $medium: 768px;
   padding: 40px;
   @media screen and (max-width: $small) {
     margin-left: -30px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin-top: -90px;
   }
 }
 
 .cartItem__actions label {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-weight: bold;
   @media screen and (max-width: $small) {
-    margin-left: 70px;
-    margin-bottom: 20px;
+    margin-left: 45px;
+    margin-bottom: 50px;
   }
 }
 
@@ -98,18 +98,29 @@ $medium: 768px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  margin-top: -17px;
+  flex-direction: row;
+  margin-top: -26px;
   @media screen and (max-width: $small) {
+    justify-content: center;
+    margin-left: 38px;
   }
 }
 
-.cartItem__qty input {
-  padding: 8px;
-  width: 60px;
+.cartItem__qty button {
+  padding: 3px;
+  width: 50px;
   border-radius: 50px;
   border: 1px solid #191919;
   outline: none;
+  @media screen and (max-width: $small) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.cartItem__qty span {
+  padding: 10px;
 }
 
 .cartItem__actions__deleteItemBtn {
@@ -128,6 +139,7 @@ $medium: 768px;
     margin-top: 24px;
     height: 45px;
     width: 45px;
+    margin-left: 35px;
   }
 }
 

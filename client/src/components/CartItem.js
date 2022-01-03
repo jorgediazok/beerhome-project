@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { decreaseItem, increaseItem } from '../actions/cart';
 import { REMOVE_FROM_CART } from '../constants/actionTypes';
 import '../styles/CartItem.scss';
 
-const CartItem = ({ itemData }) => {
+const CartItem = ({ itemData, index }) => {
+  const { cartItems } = useSelector((state) => state.cart);
   const [cantidad, setCantidad] = useState(itemData.qty);
   const dispatch = useDispatch();
 
-  const changeQuantity = (e) => {
-    setCantidad(e.target.value);
-  };
+  console.log(index);
+  console.log(cartItems);
 
   return (
     <div className='cartItem'>
@@ -28,16 +29,15 @@ const CartItem = ({ itemData }) => {
         </p>
       </div>
       <div className='cartItem__actions'>
+        <label htmlFor='qty'>Cantidad</label>
         <div className='cartItem__qty'>
-          <label htmlFor='qty'>Cantidad</label>
-          <input
-            min='1'
-            type='number'
-            id='qty'
-            name='qty'
-            onChange={changeQuantity}
-            value={cantidad}
-          />
+          <button onClick={() => dispatch(decreaseItem(itemData.item.id))}>
+            -
+          </button>
+          <span>{itemData.qty}</span>
+          <button onClick={() => dispatch(increaseItem(itemData.item.id))}>
+            +
+          </button>
         </div>
         <button
           onClick={() =>

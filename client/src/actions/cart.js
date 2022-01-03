@@ -6,3 +6,17 @@ export const addToCart = (item, qty) => {
     payload: { item, qty },
   };
 };
+
+export const increaseItem = (id) => {
+  return {
+    type: actionTypes.INCREASE_ITEM,
+    payload: id,
+  };
+};
+
+export const decreaseItem = (id) => {
+  return {
+    type: actionTypes.DECREASE_ITEM,
+    payload: id,
+  };
+};
