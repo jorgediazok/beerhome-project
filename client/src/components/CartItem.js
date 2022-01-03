@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseItem, increaseItem } from '../actions/cart';
 import { REMOVE_FROM_CART } from '../constants/actionTypes';
@@ -6,7 +6,7 @@ import '../styles/CartItem.scss';
 
 const CartItem = ({ itemData, index }) => {
   const { cartItems } = useSelector((state) => state.cart);
-  const [cantidad, setCantidad] = useState(itemData.qty);
+  // const [cantidad, setCantidad] = useState(itemData.qty);
   const dispatch = useDispatch();
 
   console.log(index);

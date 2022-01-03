@@ -1,13 +1,14 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  CLEAR_CART,
   INCREASE_ITEM,
   DECREASE_ITEM,
+  CLEAR_CART,
 } from '../constants/actionTypes';
 
 const initialState = {
   cartItems: [],
+  total: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
