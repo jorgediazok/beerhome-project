@@ -7,7 +7,7 @@ export const addToCart = (item, qty) => {
   };
 };
 
-export const increaseItem = (id) => {
+export const increaseItem = (id, qty) => {
   return {
     type: actionTypes.INCREASE_ITEM,
     payload: id,

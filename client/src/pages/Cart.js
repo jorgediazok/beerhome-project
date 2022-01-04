@@ -8,6 +8,8 @@ import CartItem from '../components/CartItem';
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
+  // console.log(cartItems);
+
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
@@ -16,6 +18,7 @@ const Cart = () => {
     let price = 0;
 
     cartItems.forEach((item) => {
+      console.log(item.qty);
       items += item.qty;
       price += item.qty * item.item.price;
     });
@@ -27,7 +30,7 @@ const Cart = () => {
   return (
     <div className='cart'>
       <div className='cart__items'>
-        {cartItems.length === 0 ? (
+        {cartItems?.length === 0 ? (
           <div className='cart__no__beer__container'>
             <h1 className='cart__no__beer__message'>
               No hay cervezas en el carro
@@ -39,8 +42,8 @@ const Cart = () => {
             </Link>
           </div>
         ) : (
-          cartItems?.map((beer, index) => (
-            <CartItem key={beer.item.id} itemData={beer} index={index} />
+          cartItems?.map((beer) => (
+            <CartItem key={beer.item.id} itemData={beer} />
           ))
         )}
       </div>

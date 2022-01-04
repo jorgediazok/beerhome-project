@@ -1,14 +1,13 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  CLEAR_CART,
   INCREASE_ITEM,
   DECREASE_ITEM,
-  CLEAR_CART,
 } from '../constants/actionTypes';
 
 const initialState = {
   cartItems: [],
-  total: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -30,33 +29,37 @@ const cartReducer = (state = initialState, action) => {
 
     // increasing ites inside cart
     case INCREASE_ITEM:
-      let incResults = state.cartItems.map((item) => {
-        if (item.id === action.payload.id) {
-          item = { ...item, qty: item.qty + 1 };
-        }
-        return item;
-      });
+      let index = state.cartItems.findIndex(
+        (product) => product.item.id === action.payload
+      );
+
+      state.cartItems[index] = {
+        ...state.cartItems[index],
+        qty: state.cartItems[index].qty + 1,
+      };
 
       return {
         ...state,
-        cartItems: incResults,
+        cartItems: [...state.cartItems],
       };
 
     // decrease item inside the cart
     case DECREASE_ITEM:
-      let decResults = state.cartItems.map((item) => {
-        if (item.id === action.payload.id) {
-          item = {
-            ...item,
-            qty: item.qty === 1 ? (item.qty = 1) : item.qty - 1,
-          };
-        }
-        return item;
-      });
+      let idx = state.cartItems.findIndex(
+        (product) => product.item.id === action.payload
+      );
+
+      state.cartItems[idx] = {
+        ...state.cartItems[idx],
+        qty:
+          state.cartItems[idx].qty === 1
+            ? (state.cartItems[idx].qty = 1)
+            : state.cartItems[idx].qty - 1,
+      };
 
       return {
         ...state,
-        cartItems: decResults,
+        cartItems: [...state.cartItems],
       };
 
     case CLEAR_CART:
