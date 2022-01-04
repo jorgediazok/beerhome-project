@@ -6,7 +6,7 @@ import decode from 'jwt-decode';
 import * as actionType from '../constants/actionTypes';
 import '../styles/Navbar.scss';
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
   //States
   const [clickMenu, setClickMenu] = useState(false);
   const [scrollNav, setScrollNav] = useState(false);
@@ -143,9 +143,7 @@ const Navbar = () => {
               <Link to='/cart' onClick={closeMobileMenu}>
                 <i className='fas fa-cart-arrow-down cart__icon' />
                 <div className='counter__icon'>
-                  <span className='counter__icon__text'>
-                    {cart.cartItems.length}
-                  </span>
+                  <span className='counter__icon__text'>{totalItems}</span>
                 </div>
               </Link>
             </li>
@@ -192,9 +190,7 @@ const Navbar = () => {
               <Link to='/cart' onClick={closeMobileMenu}>
                 <i className='fas fa-cart-arrow-down cart__icon' />
                 <div className='counter__icon__two'>
-                  <span className='counter__icon__text'>
-                    {cart.cartItems.length}
-                  </span>
+                  <span className='counter__icon__text'>{totalItems}</span>
                 </div>
               </Link>
             </li>

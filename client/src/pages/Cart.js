@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/Cart.scss';
 
 import CartItem from '../components/CartItem';
 
-const Cart = () => {
+const Cart = ({ totalPrice, totalItems }) => {
   const { cartItems } = useSelector((state) => state.cart);
-
-  // console.log(cartItems);
-
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
-
-  useEffect(() => {
-    let items = 0;
-    let price = 0;
-
-    cartItems.forEach((item) => {
-      console.log(item.qty);
-      items += item.qty;
-      price += item.qty * item.item.price;
-    });
-
-    setTotalItems(items);
-    setTotalPrice(price);
-  }, [cartItems, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
   return (
     <div className='cart'>
