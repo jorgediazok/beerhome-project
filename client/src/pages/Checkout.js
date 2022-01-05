@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom';
+import withReactContent from 'sweetalert2-react-content';
 import { useSelector } from 'react-redux';
+import '../styles/Checkout.scss';
 
-const Checkout = ({ totalItems, totalPrice }) => {
+const Checkout = ({ totalPrice }) => {
+  const history = useHistory();
   const [form, setForm] = useState({
     name: '',
     phone: '',
-    email: '',
+    document: '',
     address: '',
     zipCode: '',
     time: '',
@@ -16,11 +21,42 @@ const Checkout = ({ totalItems, totalPrice }) => {
   const [count, setCount] = useState(1);
   const { cartItems } = useSelector((state) => state.cart);
 
+  const MySwal = withReactContent(Swal);
+
   const updateForm = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    localStorage.removeItem('products');
+
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      footer: 'Copyright 2018',
+      didOpen: () => {
+        // `MySwal` is a subclass of `Swal`
+        //   with all the same instance & static methods
+        MySwal.clickConfirm();
+      },
+    })
+      .then(() => {
+        return MySwal.fire(
+          <>
+            <h2>Compra Confirmada</h2>
+            <p>Le enviamos un mail con su orden.</p>
+          </>
+        );
+      })
+      .then(() => {
+        history.go('/');
+      });
+
+    history.push('/');
   };
 
   return (
@@ -31,7 +67,7 @@ const Checkout = ({ totalItems, totalPrice }) => {
       </div>
       <div className='contact__container'>
         <div className='contact__form'>
-          <form>
+          <form onSubmit={handleSubmit}>
             <h2 className='contact__form__title'>Paso N° {count} de 3</h2>
             {count === 1 ? (
               <>
@@ -60,13 +96,14 @@ const Checkout = ({ totalItems, totalPrice }) => {
 
                 <div className='contact__form__input'>
                   <input
-                    type='email'
-                    name='email'
+                    type='tel'
+                    maxLength={8}
+                    name='document'
                     required='required'
-                    value={form.email}
+                    value={form.document}
                     onChange={updateForm}
                   />
-                  <span>Email</span>
+                  <span>Documento</span>
                 </div>
               </>
             ) : null}
@@ -153,7 +190,6 @@ const Checkout = ({ totalItems, totalPrice }) => {
                     name='creditCardNumber'
                     required='required'
                     maxLength={16}
-                    minLength={16}
                     value={form.creditCardNumber}
                     onChange={updateForm}
                   />
@@ -177,44 +213,57 @@ const Checkout = ({ totalItems, totalPrice }) => {
                     name='code'
                     required='required'
                     value={form.code}
-                    maxlength={3}
+                    maxLength={3}
                     onChange={updateForm}
                   />
                   <span>Código (3 números)</span>
                 </div>
-
-                <div className='contact__form__input'>
-                  <input type='submit' name='' value='Enviar' />
-                </div>
               </>
             ) : null}
+
+            <div className='checkout__form__buttons__container'>
+              {count === 3 ? (
+                <div className='checkout__form__input'>
+                  <button
+                    type='submit'
+                    name='pagar'
+                    className='checkout__form__input__button '
+                  >
+                    Pagar
+                  </button>
+                </div>
+              ) : null}
+
+              {count === 2 || count === 3 ? (
+                <div className='checkout__form__input'>
+                  <button
+                    className='checkout__form__input__button'
+                    type='submit'
+                    name='volver'
+                    value='Volver'
+                    onClick={() => setCount(count - 1)}
+                    disabled={count < 2}
+                  >
+                    Volver
+                  </button>
+                </div>
+              ) : null}
+
+              {count === 1 || count === 2 ? (
+                <div className='checkout__form__input'>
+                  <button
+                    type='submit'
+                    className='checkout__form__input__button'
+                    name='continuar'
+                    onClick={() => setCount(count + 1)}
+                    disabled={count > 2}
+                  >
+                    Continuar
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </form>
-
-          <div className='contact__form__buttons__container'>
-            {count === 2 || count === 3 ? (
-              <div className='contact__form__input'>
-                <input
-                  type='submit'
-                  name='volver'
-                  value='Volver'
-                  onClick={() => setCount(count - 1)}
-                  disabled={count < 2}
-                />
-              </div>
-            ) : null}
-
-            {count === 1 || count === 2 ? (
-              <div className='contact__form__input'>
-                <input
-                  type='submit'
-                  name=''
-                  value='Continuar'
-                  onClick={() => setCount(count + 1)}
-                  disabled={count > 2}
-                />
-              </div>
-            ) : null}
-          </div>
         </div>
       </div>
     </div>
