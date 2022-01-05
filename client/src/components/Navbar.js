@@ -19,6 +19,7 @@ const Navbar = ({ totalItems }) => {
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
     history.push('/login');
+    history.go(0);
     setUser(null);
   };
 
@@ -73,6 +74,7 @@ const Navbar = ({ totalItems }) => {
             <i className={clickMenu ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={clickMenu ? 'nav-menu active' : 'nav-menu'}>
+            <div></div>
             <li className='nav__item'>
               <ScrollLink
                 to='ofertas'

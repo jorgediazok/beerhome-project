@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../actions/cart';
 import Client from '../api/api';
@@ -11,7 +11,9 @@ import '../styles/TiendaDetails.scss';
 
 const TiendaDetails = () => {
   const [cantidad, setCantidad] = useState(1);
+  const history = useHistory();
   const [beer, setBeer] = useState([]);
+  const user = JSON.parse(localStorage.getItem('profile'));
   const { id } = useParams();
 
   //TOAST CONFIGURATION
@@ -28,8 +30,12 @@ const TiendaDetails = () => {
   const dispatch = useDispatch();
 
   const addItem = (item, qty) => {
-    dispatch(addToCart(item, qty));
-    notify();
+    if (user) {
+      dispatch(addToCart(item, qty));
+      notify();
+    } else {
+      history.push('/login');
+    }
   };
 
   const handleAdd = () => {
