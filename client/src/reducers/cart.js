@@ -7,7 +7,9 @@ import {
 } from '../constants/actionTypes';
 
 const initialState = {
-  cartItems: [],
+  cartItems: localStorage.getItem('products')
+    ? JSON.parse(localStorage.getItem('products'))
+    : [],
 };
 
 const cartReducer = (state = initialState, action) => {

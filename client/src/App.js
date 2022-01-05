@@ -46,6 +46,8 @@ function App() {
     getData();
   }, []);
 
+  //PRODUCTS
+
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
@@ -54,10 +56,11 @@ function App() {
     let price = 0;
 
     cartItems.forEach((item) => {
-      console.log(item.qty);
       items += item.qty;
       price += item.qty * item.item.price;
     });
+
+    localStorage.setItem('products', JSON.stringify(cartItems));
 
     setTotalItems(items);
     setTotalPrice(price);
@@ -96,7 +99,9 @@ function App() {
           <Route exact path='/cart'>
             <Cart totalPrice={totalPrice} totalItems={totalItems} />
           </Route>
-          <Route exact path='/checkout' component={Checkout} />
+          <Route exact path='/checkout'>
+            <Checkout totalItems={totalItems} totalPrice={totalPrice} />
+          </Route>
           <Route path='*' component={PageNotFound} />
         </Switch>
         <Footer />

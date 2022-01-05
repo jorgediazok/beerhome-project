@@ -68,6 +68,11 @@ $medium: 768px;
   }
 }
 
+.contact__form__buttons__container {
+  display: flex;
+  justify-content: center;
+}
+
 .contact__contactInfo {
   width: 50%;
   display: flex;

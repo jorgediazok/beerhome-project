@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/Cart.scss';
 
@@ -7,6 +7,11 @@ import CartItem from '../components/CartItem';
 
 const Cart = ({ totalPrice, totalItems }) => {
   const { cartItems } = useSelector((state) => state.cart);
+  const history = useHistory();
+
+  const handleSubmit = () => {
+    history.push('/checkout');
+  };
 
   return (
     <div className='cart'>
@@ -34,7 +39,9 @@ const Cart = ({ totalPrice, totalItems }) => {
           <span>TOTAL: ({totalItems} items)</span>
           <span>$ {totalPrice}</span>
         </div>
-        <button className='cart__summary__checkoutBtn'>Terminar Compra</button>
+        <button className='cart__summary__checkoutBtn' onClick={handleSubmit}>
+          Terminar Compra
+        </button>
       </div>
     </div>
   );
