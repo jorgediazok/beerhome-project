@@ -123,6 +123,10 @@ $medium: 768px;
     display: flex;
     margin-top: 20px;
   }
+
+  &:disabled {
+    opacity: 0.6;
+  }
 }
 
 .cart__summary__checkoutBtn:hover {

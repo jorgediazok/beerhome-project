@@ -39,7 +39,11 @@ const Cart = ({ totalPrice, totalItems }) => {
           <span>TOTAL: ({totalItems} items)</span>
           <span>$ {totalPrice}</span>
         </div>
-        <button className='cart__summary__checkoutBtn' onClick={handleSubmit}>
+        <button
+          className='cart__summary__checkoutBtn'
+          onClick={handleSubmit}
+          disabled={cartItems.length === 0}
+        >
           Terminar Compra
         </button>
       </div>
