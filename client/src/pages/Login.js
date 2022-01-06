@@ -5,10 +5,6 @@ import { useDispatch } from 'react-redux';
 //IMAGE OF LOGIN CONTAINER
 import Image from '../assets/images/beerhouse5.jpg';
 
-//ICONS
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook } from 'react-icons/fa';
-
 //ACTIONS
 import { signin, signup } from '../actions/auth';
 
@@ -114,13 +110,6 @@ const Login = () => {
                   </div>
                 </div>
               </form>
-              <p>O Loggeate con</p>
-              <span>
-                <FaFacebook className='fa-facebook' />
-              </span>
-              <span>
-                <FcGoogle className='fa-google' />
-              </span>
             </div>
           </div>
         </div>
