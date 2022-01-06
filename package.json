@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "proxy": "http://localhost:5000/api/user",
 
   "scripts": {
     "start": "node server.js",
