@@ -141,7 +141,11 @@ const Navbar = ({ totalItems }) => {
               )}
             </li>
             <li className='nav__item'>
-              <Link to='/cart' onClick={closeMobileMenu}>
+              <Link
+                to='/cart'
+                onClick={closeMobileMenu}
+                className='nav__item__icon'
+              >
                 <i className='fas fa-cart-arrow-down cart__icon' />
                 <div className='counter__icon'>
                   <span className='counter__icon__text'>{totalItems}</span>
@@ -188,7 +192,11 @@ const Navbar = ({ totalItems }) => {
               )}
             </li>
             <li className='nav__item'>
-              <Link to='/cart' onClick={closeMobileMenu}>
+              <Link
+                to='/cart'
+                onClick={closeMobileMenu}
+                className='nav__item__icon'
+              >
                 <i className='fas fa-cart-arrow-down cart__icon' />
                 <div className='counter__icon__two'>
                   <span className='counter__icon__text'>{totalItems}</span>
