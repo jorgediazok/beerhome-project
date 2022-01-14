@@ -10,15 +10,15 @@ const Testimonials = () => {
         <div className='container'>
           <div className='row'>
             <Testimonial
-              image='https://images-na.ssl-images-amazon.com/images/S/amzn-author-media-prod/tqd62mp9jt5dnk8t4bek4fcg5t._SX450_.jpg'
-              name='Cristian Fantin'
+              image='https://pbs.twimg.com/profile_images/606196213369720832/lSvWN_q-_400x400.jpg'
+              name='Marcos Arlia'
               profession='Músico y Escritor'
               text='Siempre es bueno para un artista tener una cerveza fría para esos momentos de falta de inspiración. Con Beerhouse puedo tener 
               una siempre ya que los envíos son muy rápidos y eficientes'
             />
             <Testimonial
-              image='https://i2.wp.com/borderperiodismo.com/wp-content/uploads/2020/12/Beatriz-Sarlo.jpg?fit=800%2C600&ssl=1'
-              name='Beatríz Sarlo'
+              image='https://s3media.247sports.com/Uploads/Assets/769/656/9656769.jpg'
+              name='Beatríz Soria'
               profession='Escritora y Ensayista'
               text='Realmente la variedad y calidad de los productos de Beerhouse es muy difícil de encontrar en otras cervecerías de Buenos Aires. Cada
               vez que puedo, hago un pedido y en un rato me llega'

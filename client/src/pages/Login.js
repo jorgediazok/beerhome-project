@@ -86,7 +86,7 @@ const Login = () => {
                           id='password'
                           name='confirmPassword'
                           type='password'
-                          placeholder='Password'
+                          placeholder='Confirmar Password'
                           // handleShowPassword={handleShowPassword}
                           onChange={handleChange}
                           className='input-password px-3'
