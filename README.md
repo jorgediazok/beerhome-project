@@ -49,7 +49,6 @@ npm start
 - Node
 - Express
 - JSON Web Token
-- BCrypt
 - CORS
 
 ## Demo
