@@ -18,7 +18,7 @@ PORT=5000
 DB_CONNECTION=
 ```
 
-Create a NoSQL database with any client, and add your connection string to the DB variable in the **.env** file. For example:
+Create a MongoDB database, and add your connection string to the DB variable in the **.env** file. For example:
 
 ```
 DB_CONNECTION=mongodb+srv://yourusername:<password>@cluster1.2h1zk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
@@ -41,10 +41,15 @@ npm start
 ### Frontend
 
 - React
+- Redux
+- Sass
 
 ### Backend
 
-- NodeJS
+- Node
+- Express
+- JSON Web Token
+- CORS
 
 ## Demo
 
