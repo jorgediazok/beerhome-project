@@ -40,15 +40,15 @@ npm start
 
 ### Frontend
 
-- ReactJS
+- React
 - Redux
 - Sass
 
 ### Backend
 
-- NodeJS
-- ExpressJS
-- JSONWebToken
+- Node
+- Express
+- JSON Web Token
 - BCrypt
 - CORS
 
