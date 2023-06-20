@@ -6,7 +6,7 @@ const Footer = () => {
     <div className='footer__container'>
       <div className='footer__item'>
         <img
-          src='http://bucarecerveceria.com/wp-content/uploads/2017/02/cerveceria.jpg'
+          src='https://i0.wp.com/laderasur.com/wp-content/uploads/2018/07/f376447d-01e3-4f57-8cab-068656e3ca2b.jpg?resize=1136%2C759&ssl=1'
           alt='footer'
           className='footer__image'
         />
